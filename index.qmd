@@ -7,7 +7,13 @@ format:
 jupyter: python3
 ---
 
-## Time series
+### Course outline
+
+[Course outline](https://thiyanga-spatiotemporal.netlify.app/posts/welcome/)
+
+
+
+# Time series
 
 A time series is a sequence of observations taken sequentially in time.
 
@@ -65,6 +71,7 @@ Evaluate the fitted model
 ![](1.png)
 
 ---
+
 ![](2.png)
 ---
 
@@ -96,3 +103,77 @@ In general,
 - the average length of cycles is longer than the length of a seasonal pattern.
 
 - the magnitude of cycles tends to be more variable than the magnitude of seasonal patterns.
+
+---
+
+![](3.png)
+
+---
+
+![](4.png)
+
+---
+
+![](5.png)
+
+---
+
+![](6.png)
+
+---
+
+![](7.png)
+
+---
+
+![](8.png)
+
+---
+
+![](9.png)
+
+---
+
+![](10.png)
+
+---
+
+![](11.png)
+
+---
+
+![](12.png)
+
+---
+
+![](13.png)
+
+---
+
+![](14.png)
+
+---
+
+![](15.png)
+
+---
+
+![](16.png)
+
+---
+
+![](17.png)
+
+---
+
+![](18.png)
+
+---
+
+[Cont: click here](https://tsforecasting-thiyanga.netlify.app/slides/timeseries1#39)
+
+[Basics of time series forecasting - 1](https://tsforecasting-thiyanga.netlify.app/slides/timeseries2#6)
+
+[Basics of time series forecasting - 2](https://tsforecasting-thiyanga.netlify.app/slides/timeseriesforecasting3#4)
+---
+
