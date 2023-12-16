@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -318,6 +383,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -478,6 +546,990 @@
 </section>
 <section class="slide level2">
 
+</section></section>
+<section id="python" class="title-slide slide level1 center">
+<h1>Python</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>mean <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>std <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>num_samples <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>samples <span class="op">=</span> numpy.random.normal(mean, std, size<span class="op">=</span>num_samples)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>plt.plot(samples)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display column-margin">
+<p><img data-src="index_files/figure-revealjs/cell-2-output-1.png" width="792" height="411"></p>
+</div>
+</div>
+</section>
+
+<section id="acf" class="title-slide slide level1 center">
+<h1>ACF</h1>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf</span>
+<span id="cb2-4"><a href="#cb2-4"></a>plot_acf(samples, lags<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-3-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+</section>
+
+<section id="random-walk" class="title-slide slide level1 center">
+<h1>Random walk</h1>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2"></a>rw <span class="op">=</span> np.cumsum(samples)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>plt.plot(rw)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-4-output-1.png" width="792" height="413"></p>
+</div>
+</div>
+</section>
+
+<section id="random-walk---acf" class="title-slide slide level1 center">
+<h1>Random walk - ACF</h1>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>plot_acf(rw, lags<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-5-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+</section>
+
+<section id="difference-series" class="title-slide slide level1 center">
+<h1>Difference series</h1>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="op">=</span> pd.DataFrame(rw, columns <span class="op">=</span> [<span class="st">'Values'</span>])</span>
+<span id="cb5-2"><a href="#cb5-2"></a>df[<span class="st">'Lag 1'</span>] <span class="op">=</span> df[<span class="st">'Values'</span>].diff()</span>
+<span id="cb5-3"><a href="#cb5-3"></a>df[<span class="st">'Lag 2'</span>] <span class="op">=</span> df[<span class="st">'Values'</span>].diff().diff()</span>
+<span id="cb5-4"><a href="#cb5-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Values</th>
+<th data-quarto-table-cell-role="th">Lag 1</th>
+<th data-quarto-table-cell-role="th">Lag 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.889401</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-1.628849</td>
+<td>-0.739448</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-1.275168</td>
+<td>0.353681</td>
+<td>1.093130</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.192601</td>
+<td>1.467769</td>
+<td>1.114087</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.612170</td>
+<td>0.419568</td>
+<td>-1.048200</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>-1.353987</td>
+<td>-0.649792</td>
+<td>0.599198</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>0.102991</td>
+<td>1.456978</td>
+<td>2.106770</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>0.823517</td>
+<td>0.720526</td>
+<td>-0.736453</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>0.817326</td>
+<td>-0.006190</td>
+<td>-0.726716</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>0.442088</td>
+<td>-0.375238</td>
+<td>-0.369048</td>
+</tr>
+</tbody>
+</table>
+
+<p>100 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="plot-lag-1-series" class="title-slide slide level1 center">
+<h1>Plot Lag 1 series</h1>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>plt.plot(df[<span class="st">'Values'</span>].diff())</span>
+<span id="cb6-2"><a href="#cb6-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-7-output-1.png" width="792" height="411"></p>
+</div>
+</div>
+</section>
+
+<section id="acf-lag-1-series" class="title-slide slide level1 center">
+<h1>ACF Lag 1 series</h1>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>diff <span class="op">=</span> df[<span class="st">'Lag 1'</span>]</span>
+<span id="cb7-2"><a href="#cb7-2"></a>plot_acf(diff.dropna(), lags<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-8-output-1.png" width="813" height="431"></p>
+</div>
+</div>
+</section>
+
+<section id="example-2" class="title-slide slide level1 center">
+<h1>Example 2</h1>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">from</span> statsmodels.graphics.tsaplots <span class="im">import</span> plot_acf, plot_pacf</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-4"><a href="#cb8-4"></a>plt.rcParams.update({<span class="st">'figure.figsize'</span>:(<span class="dv">9</span>,<span class="dv">7</span>), <span class="st">'figure.dpi'</span>:<span class="dv">120</span>})</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># Import data</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'wwwusage.csv'</span>, names<span class="op">=</span>[<span class="st">'value'</span>], header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># Original Series</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].plot(df.value)<span class="op">;</span> axes[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">'Original Series'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>plot_acf(df.value, ax<span class="op">=</span>axes[<span class="dv">0</span>, <span class="dv">1</span>], lags<span class="op">=</span>np.arange(<span class="bu">len</span>(df)))</span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co"># 1st Differencing</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].plot(df.value.diff())<span class="op">;</span> axes[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">'1st Order Differencing'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16"></a>plot_acf(df.value.diff().dropna(), ax<span class="op">=</span>axes[<span class="dv">1</span>, <span class="dv">1</span>], lags<span class="op">=</span>np.arange(<span class="bu">len</span>(df) <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb8-17"><a href="#cb8-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section>
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
+
+<img data-src="index_files/figure-revealjs/cell-10-output-1.png" class="r-stretch"></section>
+<section id="nd-order-differencing" class="slide level2">
+<h2>2nd order differencing</h2>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plot_acf(df.value.diff().diff().dropna())</span>
+<span id="cb9-2"><a href="#cb9-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-11-output-1.png" class="r-stretch"></section>
+<section id="monthly-airline-passenger-numbers-1949-1960" class="slide level2">
+<h2>Monthly Airline Passenger Numbers 1949-1960</h2>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>airpassenger <span class="op">=</span> pd.read_csv(<span class="st">'AirPassengers.csv'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="im">import</span> plotnine</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>airpassenger[<span class="st">'Month'</span>]<span class="op">=</span> pd.to_datetime(airpassenger[<span class="st">'Month'</span>])</span>
+<span id="cb10-6"><a href="#cb10-6"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'#Passengers'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-12-output-1.png" class="r-stretch"></section>
+<section id="monthly-airline-passenger-numbers-1949-1960---log" class="slide level2">
+<h2>Monthly Airline Passenger Numbers 1949-1960 - log</h2>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span>
+<span id="cb11-3"><a href="#cb11-3"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'naturallog'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-13-output-1.png" class="r-stretch"></section>
+<section id="monthly-airline-passenger-numbers-1949-1960---log-1" class="slide level2">
+<h2>Monthly Airline Passenger Numbers 1949-1960 - log</h2>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2"></a>airpassenger[<span class="st">'naturallog'</span>] <span class="op">=</span> np.log(airpassenger[<span class="st">'#Passengers'</span>]) </span>
+<span id="cb12-3"><a href="#cb12-3"></a>ggplot(airpassenger, aes(x<span class="op">=</span><span class="st">'Month'</span>, y<span class="op">=</span><span class="st">'naturallog'</span>))<span class="op">+</span>geom_line()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-14-output-1.png" class="r-stretch"></section>
+<section id="box-cox-transformation" class="slide level2">
+<h2>Box-Cox transformation</h2>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># import modules</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb13-4"><a href="#cb13-4"></a> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>y2,fitted_lambda <span class="op">=</span> stats.boxcox(airpassenger[<span class="st">'#Passengers'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="box-cox-transformation-exploring-the-output" class="slide level2">
+<h2>Box-Cox transformation: Exploring the output</h2>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>fitted_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="120">
+<pre><code>0.14802265137037945</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>y2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="121">
+<pre><code>array([ 6.82749005,  6.93282224,  7.16189151,  7.11461078,  6.98378687,
+        7.20826542,  7.39959794,  7.39959794,  7.22352834,  6.94993188,
+        6.67930112,  6.93282224,  6.88074148,  7.0663838 ,  7.29843847,
+        7.20826542,  7.05009066,  7.41371485,  7.69297755,  7.69297755,
+        7.53726005,  7.17744836,  6.86312389,  7.28363955,  7.35675408,
+        7.42775127,  7.791663  ,  7.6033268 ,  7.71801394,  7.791663  ,
+        8.03379957,  8.03379957,  7.86322651,  7.59025293,  7.3711186 ,
+        7.64214252,  7.70552693,  7.81574285,  7.96693012,  7.82769741,
+        7.85143867,  8.23478523,  8.35415797,  8.46833738,  8.14152446,
+        7.94424651,  7.71801394,  7.97819691,  8.00058286,  8.00058286,
+        8.41186604,  8.40233549,  8.34441554,  8.47763304,  8.66568618,
+        8.73398286,  8.42136224,  8.16254066,  7.81574285,  8.05570781,
+        8.08822445,  7.90983871,  8.40233549,  8.32482145,  8.39277032,
+        8.66568618,  8.97573698,  8.90544371,  8.62209995,  8.34441554,
+        8.0774311 ,  8.34441554,  8.46833738,  8.38317027,  8.69150146,
+        8.70857469,  8.71707079,  9.07418456,  9.41661628,  9.30252389,
+        9.05177744,  8.75078932,  8.42136224,  8.78409104,  8.83328615,
+        8.77580407,  9.08902184,  9.0592668 ,  9.0964106 ,  9.48162515,
+        9.72179099,  9.67415098,  9.35679401,  9.00640692,  8.72554012,
+        9.00640692,  9.07418456,  8.96801544,  9.36350433,  9.30936559,
+        9.35679401,  9.77445522, 10.01359054, 10.02424732,  9.66813973,
+        9.30252389,  8.9987716 ,  9.22613489,  9.25415593,  9.0964106 ,
+        9.40343224,  9.30936559,  9.41003199,  9.84886109, 10.14918625,
+       10.21968352,  9.66813973,  9.38353935,  9.03673716,  9.23316669,
+        9.390186  ,  9.26806127,  9.68014959,  9.61958794,  9.76283534,
+       10.05072014, 10.426264  , 10.4768849 , 10.00289463,  9.68613564,
+        9.40343224,  9.67415098,  9.74531682,  9.58881702,  9.75700771,
+        9.99215929, 10.05072014, 10.36531089, 10.75145254, 10.68404894,
+       10.23457308,  9.99215929,  9.58262264,  9.83186035])</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="step-1-plot-data" class="title-slide slide level1 center">
+<h1>Step 1: Plot data</h1>
+<ol type="1">
+<li><p>Detect unusual observations in the data</p></li>
+<li><p>Detect non-stationarity by visual inspections of plots</p></li>
+</ol>
+<p>Stationary series:</p>
+<ul>
+<li><p>has a constant mean value and fluctuates around the mean.</p></li>
+<li><p>constant variance.</p></li>
+<li><p>no pattern predictable in the long-term.</p></li>
+</ul>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-18-output-2.png" class="r-stretch"></section>
+<section id="step-2-split-time-series-into-training-and-test" class="slide level2">
+<h2>Step 2: Split time series into training and test</h2>
+<p>Specify the forecast horizon</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="im">from</span> sktime.forecasting.base <span class="im">import</span> ForecastingHorizon</span>
+<span id="cb19-4"><a href="#cb19-4"></a>fh <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb19-5"><a href="#cb19-5"></a>    pd.PeriodIndex(pd.date_range(<span class="st">"1960-01"</span>, periods<span class="op">=</span><span class="dv">12</span>, freq<span class="op">=</span><span class="st">"M"</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>fh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="123">
+<pre><code>ForecastingHorizon(['1960-01', '1960-02', '1960-03', '1960-04', '1960-05', '1960-06',
+             '1960-07', '1960-08', '1960-09', '1960-10', '1960-11', '1960-12'],
+            dtype='period[M]', is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-training-and-test-series" class="slide level2">
+<h2>Plot training and test series</h2>
+<div class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-20-output-2.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<ol type="1">
+<li><p>Need transformations?</p></li>
+<li><p>Need differencing?</p></li>
+</ol>
+</section>
+<section id="step-3-apply-transformations" class="slide level2">
+<h2>Step 3: Apply transformations</h2>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2"></a>y_train.naturallog <span class="op">=</span> np.log(y_train) </span>
+<span id="cb22-3"><a href="#cb22-3"></a>plot_series(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="125">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-21-output-2.png" class="r-stretch"></section>
+<section id="step-4-take-difference-series" class="slide level2">
+<h2>Step 4: Take difference series</h2>
+<p><strong>Identifying non-stationarity by looking at plots</strong></p>
+<ul>
+<li><p>Time series plot</p></li>
+<li><p>The ACF of stationary data drops to zero relatively quickly.</p></li>
+<li><p>The ACF of non-stationary data decreases slowly.</p></li>
+<li><p>For non-stationary data, the value of <span class="math inline">\(r_1\)</span> is often large and positive.</p></li>
+</ul>
+</section>
+<section id="non-seasonal-differencing-and-seasonal-differencing" class="slide level2">
+<h2>Non-seasonal differencing and seasonal differencing</h2>
+<p><strong>Non seasonal first-order differencing:</strong> <span class="math inline">\(Y'_t=Y_t - Y_{t-1}\)</span></p>
+<!--Miss one observation-->
+<p><strong>Non seasonal second-order differencing:</strong> <span class="math inline">\(Y''_t=Y'_t - Y'_{t-1}\)</span></p>
+<!--Miss two observations-->
+<p><strong>Seasonal differencing:</strong> <span class="math inline">\(Y_t - Y_{t-m}\)</span></p>
+<!--To get rid from prominent seasonal components. -->
+<ul>
+<li>For monthly, <span class="math inline">\(m=12\)</span>, for quarterly, <span class="math inline">\(m=4\)</span>.</li>
+</ul>
+<!--We will loosefirst 12 observations-->
+<ul>
+<li>Seasonally differenced series will have <span class="math inline">\(T-m\)</span> observations. <!--Usually we do not consider differencing more than twice. --></li>
+</ul>
+<blockquote>
+<p>There are times differencing once is not enough. However, in practice,it is almost never necessary to go beyond second-order differencing. <!--Even the second-order differencing is very rare.--></p>
+</blockquote>
+</section>
+<section id="acf-of-log-transformation-series" class="slide level2">
+<h2>ACF of log-transformation series</h2>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>plot_acf(y_train.naturallog, lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="126">
+<p><img data-src="index_files/figure-revealjs/cell-22-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-22-output-2.png"></p>
+</div>
+</div>
+</section>
+<section id="take-seasonal-difference-series" class="slide level2">
+<h2>Take seasonal difference series</h2>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>y_train.naturallog.diff12 <span class="op">=</span> y_train.naturallog.diff(<span class="dv">12</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>y_train.naturallog.diff12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+             ...   
+1959-08    0.101591
+1959-09    0.136312
+1959-10    0.125491
+1959-11    0.155072
+1959-12    0.183804
+Freq: M, Name: Number of airline passengers, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="take-seasonal-difference-series-cont." class="slide level2">
+<h2>Take seasonal difference series (cont.)</h2>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>y_train.naturallog.diff12.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<pre><code>1949-01         NaN
+1949-02         NaN
+1949-03         NaN
+1949-04         NaN
+1949-05         NaN
+1949-06         NaN
+1949-07         NaN
+1949-08         NaN
+1949-09         NaN
+1949-10         NaN
+1949-11         NaN
+1949-12         NaN
+1950-01    0.026433
+1950-02    0.065597
+1950-03    0.065958
+1950-04    0.045462
+1950-05    0.032523
+1950-06    0.098672
+1950-07    0.138586
+1950-08    0.138586
+Freq: M, Name: Number of airline passengers, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="acf---difflogdata-12" class="slide level2">
+<h2>ACF - diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>plot_acf(y_train.naturallog.diff12.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-25-output-1.png" class="r-stretch"></section>
+<section id="acf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>ACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>y_train.naturallog.diff12.diff <span class="op">=</span> y_train.naturallog.diff12.diff()</span>
+<span id="cb30-2"><a href="#cb30-2"></a>plot_acf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb30-3"><a href="#cb30-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-26-output-1.png" class="r-stretch"></section>
+<section id="pacf---first-differencing-on-difflogdata-12" class="slide level2">
+<h2>PACF - First differencing on diff(log(data), 12)</h2>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plot_pacf(y_train.naturallog.diff12.diff.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-27-output-1.png" class="r-stretch"></section>
+<section id="testing-for-nonstationarity-for-the-presence-of-unit-roots" class="slide level2">
+<h2>Testing for nonstationarity for the presence of unit roots</h2>
+<ul>
+<li><p>Dickey and Fuller (DF) test</p></li>
+<li><p>Augmented DF test</p></li>
+<li><p>Phillips and Perron (PP) nonparametric test</p></li>
+<li><p>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test</p></li>
+</ul>
+</section>
+<section id="kpss-test" class="slide level2">
+<h2>KPSS test</h2>
+<p>H0: Series is level or trend stationary.</p>
+<p>H1: Series is not stationary.</p>
+</section>
+<section id="kpss-test-1" class="slide level2">
+<h2>KPSS test</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> kpss</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="kw">def</span> kpss_test(series, <span class="op">**</span>kw):    </span>
+<span id="cb32-3"><a href="#cb32-3"></a>    statistic, p_value, n_lags, critical_values <span class="op">=</span> kpss(series, <span class="op">**</span>kw)</span>
+<span id="cb32-4"><a href="#cb32-4"></a>    <span class="co"># Format Output</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>    <span class="bu">print</span>(<span class="ss">f'KPSS Statistic: </span><span class="sc">{</span>statistic<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>p_value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-7"><a href="#cb32-7"></a>    <span class="bu">print</span>(<span class="ss">f'num lags: </span><span class="sc">{</span>n_lags<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-8"><a href="#cb32-8"></a>    <span class="bu">print</span>(<span class="st">'Critial Values:'</span>)</span>
+<span id="cb32-9"><a href="#cb32-9"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> critical_values.items():</span>
+<span id="cb32-10"><a href="#cb32-10"></a>        <span class="bu">print</span>(<span class="ss">f'   </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> : </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb32-11"><a href="#cb32-11"></a>    <span class="bu">print</span>(<span class="ss">f'Result: The series is </span><span class="sc">{</span><span class="st">"not "</span> <span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">""</span><span class="sc">}</span><span class="ss">stationary'</span>)</span>
+<span id="cb32-12"><a href="#cb32-12"></a></span>
+<span id="cb32-13"><a href="#cb32-13"></a>kpss_test(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 1.9204939010623039
+p-value: 0.01
+num lags: 6
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is not stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-test-2" class="slide level2">
+<h2>KPSS test</h2>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>kpss_test(y_train.naturallog.diff12.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.29885781439314946
+p-value: 0.1
+num lags: 5
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>kpss_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0509726778456186
+p-value: 0.1
+num lags: 2
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-test-3" class="slide level2">
+<h2>KPSS test</h2>
+<ul>
+<li><p>KPSS test may not necessarily reject the null hypothesis (that the series is level or trend stationary) even if a series is steadily increasing or decreasing.</p></li>
+<li><p>The word ‘deterministic’ implies the slope of the trend in the series does not change permanently. That is, even if the series goes through a shock, it tends to regain its original path.</p></li>
+</ul>
+<p>source: https://www.machinelearningplus.com/time-series/kpss-test-for-stationarity/</p>
+</section>
+<section id="kpss-test-4" class="slide level2">
+<h2>KPSS test</h2>
+<ul>
+<li><p>By default, it tests for stationarity around a ‘mean’ only.</p></li>
+<li><p>To turn ON the stationarity testing around a trend, you need to explicitly pass the regression=‘ct’ parameter to the kpss</p></li>
+</ul>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>kpss_test(y_train.naturallog.diff12.dropna(), regression<span class="op">=</span><span class="st">'ct'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0760056301424143
+p-value: 0.1
+num lags: 5
+Critial Values:
+   10% : 0.119
+   5% : 0.146
+   2.5% : 0.176
+   1% : 0.216
+Result: The series is stationary</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>kpss_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KPSS Statistic: 0.0509726778456186
+p-value: 0.1
+num lags: 2
+Critial Values:
+   10% : 0.347
+   5% : 0.463
+   2.5% : 0.574
+   1% : 0.739
+Result: The series is stationary</code></pre>
+</div>
+</div>
+</section>
+<section id="adf-test" class="slide level2">
+<h2>ADF test</h2>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
+<span id="cb42-2"><a href="#cb42-2"></a></span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="kw">def</span> adf_test(series):</span>
+<span id="cb42-4"><a href="#cb42-4"></a>    result <span class="op">=</span> adfuller(series, autolag<span class="op">=</span><span class="st">'AIC'</span>)</span>
+<span id="cb42-5"><a href="#cb42-5"></a>    <span class="bu">print</span>(<span class="ss">f'ADF Statistic: </span><span class="sc">{</span>result[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-6"><a href="#cb42-6"></a>    <span class="bu">print</span>(<span class="ss">f'p-value: </span><span class="sc">{</span>result[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-7"><a href="#cb42-7"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> result[<span class="dv">4</span>].items():</span>
+<span id="cb42-8"><a href="#cb42-8"></a>        <span class="bu">print</span>(<span class="st">'Critial Values:'</span>)</span>
+<span id="cb42-9"><a href="#cb42-9"></a>        <span class="bu">print</span>(<span class="ss">f'   </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb42-10"><a href="#cb42-10"></a></span>
+<span id="cb42-11"><a href="#cb42-11"></a>series <span class="op">=</span> df.loc[:, <span class="st">'value'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>H0: Series is not stationary</p>
+<p>H1: Series is stationary</p>
+</section>
+<section id="adf-test-1" class="slide level2">
+<h2>ADF test</h2>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>adf_test(y_train.naturallog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -1.3176112021439967
+p-value: 0.6210771494355872
+Critial Values:
+   1%, -3.4870216863700767
+Critial Values:
+   5%, -2.8863625166643136
+Critial Values:
+   10%, -2.580009026141913</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>adf_test(y_train.naturallog.diff12.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -2.5844902417566793
+p-value: 0.09624537566648711
+Critial Values:
+   1%, -3.492995948509562
+Critial Values:
+   5%, -2.888954648057252
+Critial Values:
+   10%, -2.58139291903223</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>adf_test(y_train.naturallog.diff12.diff.dropna())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ADF Statistic: -4.08727195454389
+p-value: 0.0010165214009067135
+Critial Values:
+   1%, -3.4936021509366793
+Critial Values:
+   5%, -2.8892174239808703
+Critial Values:
+   10%, -2.58153320754717</code></pre>
+</div>
+</div>
+</section>
+<section id="kpss-vs-adf-test" class="slide level2">
+<h2>KPSS vs ADF test</h2>
+<p>If a series is stationary according to the KPSS test by setting regression=‘ct’ and is not stationary according to the ADF test, it means the series is stationary around a deterministic trend.</p>
+<p>Further reading:</p>
+<p>Kwiatkowski, D.; Phillips, P. C. B.; Schmidt, P.; Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54 (1-3): 159-178.</p>
+</section></section>
+<section>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model" class="title-slide slide level1 center">
+<h1>Step 5: Examine the ACF/PACF to identify a suitable model</h1>
+
+</section>
+<section id="arp" class="slide level2">
+<h2>AR(p)</h2>
+<ul>
+<li><p>ACF dies out in an exponential or damped sine-wave manner.</p></li>
+<li><p>there is a significant spike at lag <span class="math inline">\(p\)</span> in PACF, but none beyond <span class="math inline">\(p\)</span>.</p></li>
+</ul>
+</section>
+<section id="maq" class="slide level2">
+<h2>MA(q)</h2>
+<ul>
+<li><p>ACF has all zero spikes beyond the <span class="math inline">\(q^{th}\)</span> spike.</p></li>
+<li><p>PACF dies out in an exponential or damped sine-wave manner.</p></li>
+</ul>
+</section>
+<section id="seasonal-components" class="slide level2">
+<h2>Seasonal components</h2>
+<ul>
+<li>The seasonal part of an AR or MA model will be seen in the seasonal lags of the PACF and ACF.</li>
+</ul>
+</section>
+<section id="arima00000112-will-show" class="slide level2">
+<h2>ARIMA(0,0,0)(0,0,1)12 will show</h2>
+<ul>
+<li><p>a spike at lag 12 in the ACF but no other significant spikes.</p></li>
+<li><p>The PACF will show exponential decay in the seasonal lags 12, 24, 36, . . . .</p></li>
+</ul>
+</section>
+<section id="arima00010012-will-show" class="slide level2">
+<h2>ARIMA(0,0,0)(1,0,0)12 will show</h2>
+<ul>
+<li><p>exponential decay in the seasonal lags of the ACF.</p></li>
+<li><p>a single significant spike at lag 12 in the PACF.</p></li>
+</ul>
+</section>
+<section id="step-5-examine-the-acfpacf-to-identify-a-suitable-model-cont." class="slide level2">
+<h2>Step 5: Examine the ACF/PACF to identify a suitable model (cont.)</h2>
+<ul>
+<li><p><span class="math inline">\(d=1\)</span> and <span class="math inline">\(D=1\)</span> (from step 4)</p></li>
+<li><p>Significant spike at lag 1 in ACF suggests non-seasonal MA(1) component.</p></li>
+<li><p>Significant spike at lag 12 in ACF suggests seasonal MA(1) component.</p></li>
+<li><p>Initial candidate model: <span class="math inline">\(ARIMA(0,1,1)(0,1,1)_{12}\)</span>.</p></li>
+<li><p>By analogous logic applied to the PACF, we could also have started with <span class="math inline">\(ARIMA(1,1,0)(1,1,0)_{12}\)</span>.</p></li>
+</ul>
+</section>
+<section id="models" class="slide level2">
+<h2>Models</h2>
+<p><strong>Initial model:</strong></p>
+<p><span class="math inline">\(ARIMA(0,1,1)(0,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,0)(1,1,0)_{12}\)</span></p>
+<p><strong>Try some variations of the initial model:</strong></p>
+<p><span class="math inline">\(ARIMA(0,1,1)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,1)(1,1,0)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,1)(1,1,1)_{12}\)</span></p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><strong>Try some variations</strong></p>
+<p>Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.</p>
+<p><span class="math inline">\(ARIMA(3,1,1)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(1,1,3)(1,1,1)_{12}\)</span></p>
+<p><span class="math inline">\(ARIMA(3,1,3)(1,1,1)_{12}\)</span></p>
+</section>
+<section id="fitting-arima-models" class="slide level2">
+<h2>Fitting ARIMA models</h2>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> sktime.forecasting.arima <span class="im">import</span> ARIMA</span>
+<span id="cb49-2"><a href="#cb49-2"></a>forecaster1 <span class="op">=</span> ARIMA(  </span>
+<span id="cb49-3"><a href="#cb49-3"></a>    order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb49-4"><a href="#cb49-4"></a>    seasonal_order<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">12</span>),</span>
+<span id="cb49-5"><a href="#cb49-5"></a>    suppress_warnings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb49-6"><a href="#cb49-6"></a>forecaster1.fit(y_train.naturallog)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="141">
+<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">ARIMA</label><div class="sk-toggleable__content"><pre>ARIMA(order=(1, 1, 0), seasonal_order=(1, 1, 0, 12), suppress_warnings=True)</pre></div></div></div></div></div>
+</div>
+</div>
+</section>
+<section id="step-6-check-residual-series" class="slide level2">
+<h2>Step 6: Check residual series</h2>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>fhtrain <span class="op">=</span> ForecastingHorizon(</span>
+<span id="cb50-2"><a href="#cb50-2"></a>    pd.PeriodIndex(pd.period_range(start<span class="op">=</span><span class="st">'1949-01'</span>, end<span class="op">=</span><span class="st">'1959-12'</span>, freq<span class="op">=</span><span class="st">'M'</span>)), is_relative<span class="op">=</span><span class="va">False</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a>)</span>
+<span id="cb50-4"><a href="#cb50-4"></a>fhtrain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="142">
+<pre><code>ForecastingHorizon(['1949-01', '1949-02', '1949-03', '1949-04', '1949-05', '1949-06',
+             '1949-07', '1949-08', '1949-09', '1949-10',
+             ...
+             '1959-03', '1959-04', '1959-05', '1959-06', '1959-07', '1959-08',
+             '1959-09', '1959-10', '1959-11', '1959-12'],
+            dtype='period[M]', length=132, is_relative=False)</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-predictions-for-the-training-period" class="slide level2">
+<h2>Obtain predictions for the training period</h2>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>y_pred_train <span class="op">=</span> forecaster1.predict(fhtrain)</span>
+<span id="cb52-2"><a href="#cb52-2"></a>y_pred_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="143">
+<pre><code>1949-01         NaN
+1949-02    4.718760
+1949-03    4.770946
+1949-04    4.883063
+1949-05    4.860073
+             ...   
+1959-08    6.310106
+1959-09    6.138659
+1959-10    6.004945
+1959-11    5.869054
+1959-12    5.974289
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="obtain-residual-series" class="slide level2">
+<h2>Obtain residual series</h2>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>residual <span class="op">=</span> y_train.naturallog <span class="op">-</span> y_pred_train</span>
+<span id="cb54-2"><a href="#cb54-2"></a>residual</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="144">
+<pre><code>1949-01         NaN
+1949-02    0.051925
+1949-03    0.111856
+1949-04   -0.023251
+1949-05   -0.064283
+             ...   
+1959-08    0.016043
+1959-09   -0.000931
+1959-10    0.003868
+1959-11    0.022590
+1959-12    0.029598
+Freq: M, Length: 132, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-residuals" class="slide level2">
+<h2>Plot residuals</h2>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>plot_series(residual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="145">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;, &lt;AxesSubplot: &gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-41-output-2.png" class="r-stretch"></section>
+<section id="plot-residuals-cont." class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>plot_acf(residual.dropna(), lags<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="146">
+<p><img data-src="index_files/figure-revealjs/cell-42-output-1.png"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-42-output-2.png"></p>
+</div>
+</div>
+</section>
+<section id="plot-residuals-cont.-1" class="slide level2">
+<h2>Plot residuals (cont.)</h2>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb59-3"><a href="#cb59-3"></a>plt.hist(residual)</span>
+<span id="cb59-4"><a href="#cb59-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-43-output-1.png" class="r-stretch"><p>Your turn: remove the outlier and draw the histogram</p>
+</section>
+<section id="ljung-box-test" class="slide level2">
+<h2>Ljung-Box Test</h2>
+<p>H0: Residuals are not serially correlated.</p>
+<p>H1: Residuals are serially correlated.</p>
+<div class="cell" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="148">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lb_stat</th>
+<th data-quarto-table-cell-role="th">lb_pvalue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>3.984776</td>
+<td>0.999955</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-generate-forecasts" class="slide level2">
+<h2>Step 7: Generate forecasts</h2>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>y_pred_1 <span class="op">=</span> forecaster1.predict(fh)</span>
+<span id="cb60-2"><a href="#cb60-2"></a>y_pred_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="149">
+<pre><code>1960-01    6.037478
+1960-02    5.982107
+1960-03    6.133707
+1960-04    6.102795
+1960-05    6.154218
+1960-06    6.301004
+1960-07    6.437653
+1960-08    6.461717
+1960-09    6.257650
+1960-10    6.134112
+1960-11    6.003672
+1960-12    6.103036
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="back-transformation" class="slide level2">
+<h2>Back transformation</h2>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>y_pred_1.exp <span class="op">=</span> np.exp(y_pred_1)</span>
+<span id="cb62-2"><a href="#cb62-2"></a>y_pred_1.exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<pre><code>1960-01    418.835520
+1960-02    396.274338
+1960-03    461.142677
+1960-04    447.105543
+1960-05    470.698677
+1960-06    545.118980
+1960-07    624.938414
+1960-08    640.159214
+1960-09    521.990600
+1960-10    461.329316
+1960-11    404.912933
+1960-12    447.213408
+Freq: M, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-training-test-and-forecasts" class="slide level2">
+<h2>Plot training, test, and forecasts</h2>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>plot_series(y_train, y_test, y_pred_1.exp, labels<span class="op">=</span>[<span class="st">"y_train"</span>, <span class="st">"y_test"</span>, <span class="st">"y_forecast"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="151">
+<pre><code>(&lt;Figure size 1920x480 with 1 Axes&gt;,
+ &lt;AxesSubplot: ylabel='Number of airline passengers'&gt;)</code></pre>
+</div>
+
+</div>
+<img data-src="index_files/figure-revealjs/cell-47-output-2.png" class="r-stretch"></section>
+<section id="evaluation" class="slide level2">
+<h2>Evaluation</h2>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="im">from</span> sktime.performance_metrics.forecasting <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a>    mean_absolute_percentage_error</span>
+<span id="cb66-3"><a href="#cb66-3"></a>mean_absolute_percentage_error(y_test, y_pred_1.exp, symmetric<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="152">
+<pre><code>0.027756916452706674</code></pre>
+</div>
+</div>
+</section>
+<section id="your-turn-1" class="slide level2">
+<h2>Your Turn</h2>
+<p>Fit other variants of ARIMA models and identify the best ARIMA model for the series.</p>
+</section>
+<section id="modelling-steps" class="slide level2">
+<h2>Modelling steps</h2>
+<ol type="1">
+<li><p>Plot the data.</p></li>
+<li><p>If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.</p></li>
+<li><p>If the data are non-stationary, take first differences of the data until the data are stationary.</p></li>
+<li><p>Examine the ACF/PACF to identify a suitable model.</p></li>
+<li><p>Try your chosen model(s), and use the AICc to search for a better model.</p></li>
+</ol>
+</section>
+<section id="modelling-steps-cont." class="slide level2">
+<h2>Modelling steps (cont.)</h2>
+<ol start="6" type="1">
+<li><p>Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.</p></li>
+<li><p>Once the residuals look like white noise, calculate forecasts.</p></li>
+</ol>
+<p>Source: Forecasting: Principles and Practice, Rob J Hyndman and George Athanasopoulos</p>
+</section>
+<section id="forecasting-with-python" class="slide level2">
+<h2>Forecasting with Python</h2>
+<p><a href="https://github.com/thiyangt/spatiotemporal_lab/blob/main/7_timeseries_sktime.ipynb">Lab</a></p>
 <div class="footer footer-default">
 
 </div>
